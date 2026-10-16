@@ -1,0 +1,89 @@
+# ==========================================
+# Root .gitignore for TBC Monorepo
+# (Laravel Backend + Flutter Mobile App)
+# ==========================================
+
+# --- OS & Environment ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+*.log
+*.tmp
+*.bak
+
+# --- IDE & Editors ---
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.iml
+*.ipr
+*.iws
+*.swp
+*.swo
+*~
+
+# --- Backend (Laravel: tbc_app) ---
+tbc_app/vendor/
+tbc_app/node_modules/
+tbc_app/npm-debug.log
+tbc_app/yarn-error.log
+tbc_app/.env
+tbc_app/.env.backup
+tbc_app/.env.production
+tbc_app/.phpunit.result.cache
+tbc_app/public/storage
+tbc_app/public/hot
+tbc_app/storage/*.key
+tbc_app/storage/logs/*.log
+tbc_app/storage/framework/cache/data/*
+!tbc_app/storage/framework/cache/data/.gitignore
+tbc_app/storage/framework/sessions/*
+!tbc_app/storage/framework/sessions/.gitignore
+tbc_app/storage/framework/testing/*
+!tbc_app/storage/framework/testing/.gitignore
+tbc_app/storage/framework/views/*
+!tbc_app/storage/framework/views/.gitignore
+tbc_app/bootstrap/cache/*.php
+!tbc_app/bootstrap/cache/.gitignore
+
+# Firebase Credentials (Backend)
+tbc_app/storage/firebase/*.json
+!tbc_app/storage/firebase/*.example
+
+# --- Mobile (Flutter: tbc_digital_app) ---
+tbc_digital_app/.dart_tool/
+tbc_digital_app/.flutter-plugins-dependencies
+tbc_digital_app/.pub-cache/
+tbc_digital_app/.pub/
+tbc_digital_app/build/
+tbc_digital_app/coverage/
+
+# Flutter Ephemeral & Platform specific
+tbc_digital_app/android/.gradle/
+tbc_digital_app/android/local.properties
+tbc_digital_app/android/captures/
+tbc_digital_app/android/app/debug/
+tbc_digital_app/android/app/profile/
+tbc_digital_app/android/app/release/
+tbc_digital_app/android/key.properties
+tbc_digital_app/android/**/*.keystore
+tbc_digital_app/android/**/*.jks
+
+tbc_digital_app/ios/Flutter/Generated.xcconfig
+tbc_digital_app/ios/Flutter/ephemeral/
+tbc_digital_app/ios/Flutter/flutter_export_environment.sh
+tbc_digital_app/ios/Flutter/.last_build_id
+tbc_digital_app/ios/Pods/
+tbc_digital_app/ios/.symlinks/
+
+tbc_digital_app/linux/flutter/ephemeral/
+tbc_digital_app/macos/Flutter/ephemeral/
+tbc_digital_app/windows/flutter/ephemeral/
