@@ -1,13 +1,13 @@
 class ApiConstants {
   ApiConstants._();
 
-  // Base URL (Production Hosting)
-  static const String baseUrl = 'https://amiitrans.com/tbc/api';
-  static const String storageUrl = 'https://amiitrans.com/tbc/storage';
+  // Base URL (Lokal Pengembangan / Wi-Fi Device & Emulator)
+  static const String baseUrl = 'http://172.16.55.214:8000/api';
+  static const String storageUrl = 'http://172.16.55.214:8000/storage';
 
-  // Base URL (Lokal Pengembangan / Emulator)
-  // static const String baseUrl = 'http://172.16.55.214:8000/api';
-  // static const String storageUrl = 'http://172.16.55.214:8000/storage';
+  // Base URL (Production Hosting)
+  // static const String baseUrl = 'https://amiitrans.com/tbc/api';
+  // static const String storageUrl = 'https://amiitrans.com/tbc/storage';
 
   // Auth Endpoints
   static const String login = '$baseUrl/login';
