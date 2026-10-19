@@ -43,7 +43,9 @@ class _ValidasiPasienScreenState extends State<ValidasiPasienScreen> {
         "hari": item["day"] ?? "-",
         "status": mapStatus(item["status_validate"]),
         "foto": (proofImage != null && proofImage.isNotEmpty)
-            ? baseUrl + proofImage
+            ? (proofImage.startsWith('http')
+                ? proofImage
+                : "${ApiConstants.storageUrl}/$proofImage")
             : "",
       };
     }).toList();

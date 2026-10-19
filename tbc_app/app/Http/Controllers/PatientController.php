@@ -672,7 +672,6 @@ class PatientController extends Controller
             ],
             [
                 'user_id' => $request->user_id,
-                'device' => '',
                 'device'  => $request->device ?? 'android',
             ]
         );

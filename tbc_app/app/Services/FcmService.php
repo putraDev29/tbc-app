@@ -14,14 +14,28 @@ class FcmService
 
     public function __construct()
     {
-        $factory = (new Factory)
-            ->withServiceAccount(storage_path('firebase/firebase.json'));
+        $firebasePath = storage_path('firebase/firebase.json');
 
-        $this->messaging = $factory->createMessaging();
+        if (!file_exists($firebasePath)) {
+            \Illuminate\Support\Facades\Log::warning("FCM Warning: Service account file not found at $firebasePath");
+            return;
+        }
+
+        try {
+            $factory = (new Factory)->withServiceAccount($firebasePath);
+            $this->messaging = $factory->createMessaging();
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error("FCM Init Error: " . $e->getMessage());
+        }
     }
 
     public function sendToUser($userId, $title, $body, $type = 'obat', array $extraData = [])
     {
+        if (!$this->messaging) {
+            \Illuminate\Support\Facades\Log::warning("FCM Warning: Messaging service is not initialized, skipping notification.");
+            return;
+        }
+
         $tokens = FcmToken::where('user_id', $userId)
             ->pluck('token')
             ->filter()

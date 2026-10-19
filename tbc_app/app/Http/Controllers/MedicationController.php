@@ -108,10 +108,19 @@ class MedicationController extends Controller
             return;
         }
 
-        $factory = (new Factory)
-            ->withServiceAccount(storage_path('firebase/firebase.json'));
+        $firebasePath = storage_path('firebase/firebase.json');
+        if (!file_exists($firebasePath)) {
+            Log::warning("FCM Medication Warning: $firebasePath not found");
+            return;
+        }
 
-        $messaging = $factory->createMessaging();
+        try {
+            $factory = (new Factory)->withServiceAccount($firebasePath);
+            $messaging = $factory->createMessaging();
+        } catch (\Exception $e) {
+            Log::error("FCM Medication Init Error: " . $e->getMessage());
+            return;
+        }
 
         // ================= PESAN =================
         $messageText = match ($status) {
